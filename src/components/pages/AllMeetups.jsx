@@ -1,6 +1,7 @@
 import React from "react";
+import MeetupsList from "../meetups/MeetupsList";
 
-const DATA = [
+const MEETUP_DATA = [
   {
     id: "1",
     title: "This is first meetup",
@@ -23,11 +24,8 @@ const DATA = [
 
 const AllMeetups = () => {
   return (
-    <section className="md:container md:mx-auto">
-      <h1> All Meetups </h1>
-      {DATA.map((meetup, index) => {
-        return <li key={meetup.id}>{meetup.title}</li>;
-      })}
+    <section className="md:container md:mx-auto flex justify-center item-center">
+      <MeetupsList meetup={MEETUP_DATA} />
     </section>
   );
 };
