@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import MeetupsList from "../meetups/MeetupsList";
+import MeetupsList from "../components/meetups/MeetupsList";
 
 const AllMeetups = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -32,7 +32,6 @@ const AllMeetups = () => {
       </section>
     );
   }
-  console.log(loadedMeetups);
   return (
     <section className="md:container md:mx-auto flex justify-center item-center">
       <MeetupsList meetup={loadedMeetups} />
