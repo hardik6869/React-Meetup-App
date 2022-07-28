@@ -2,8 +2,11 @@ import React from "react";
 import NewMeetupForm from "../meetups/NewMeetupForm";
 
 const NewMeetup = () => {
-  const addMeetupHandler = (meetupData) => {};
-  return <NewMeetupForm onAddMeetup={addMeetupHandler} />;
+  return (
+    <section>
+      <h1> Add New Meetup</h1> <NewMeetupForm />
+    </section>
+  );
 };
 
 export default NewMeetup;

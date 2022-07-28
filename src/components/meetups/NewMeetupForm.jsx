@@ -1,10 +1,21 @@
 import React, { useRef } from "react";
 
-const NewMeetupForm = ({ props }) => {
+const NewMeetupForm = () => {
   const titleInputRef = useRef();
   const imageInputRef = useRef();
   const addressInputRef = useRef();
   const descriptionInputRef = useRef();
+
+  const addMeetupHandler = (meetupData) => {
+    fetch(
+      "https://react-meetup-5c2cf-default-rtdb.firebaseio.com/meetups.json",
+      {
+        method: "POST",
+        body: JSON.stringify(meetupData),
+        headers: { "Content-Type": "application/json" },
+      }
+    );
+  };
 
   const AddMeetup = (e) => {
     e.preventDefault();
@@ -19,7 +30,7 @@ const NewMeetupForm = ({ props }) => {
       address: enteredAddress,
       description: enteredDescription,
     };
-    props.onAddMeetup(meetupData);
+    addMeetupHandler(meetupData);
   };
 
   return (
