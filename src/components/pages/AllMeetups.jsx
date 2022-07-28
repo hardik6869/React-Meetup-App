@@ -1,31 +1,41 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import MeetupsList from "../meetups/MeetupsList";
 
-const MEETUP_DATA = [
-  {
-    id: "1",
-    title: "This is first meetup",
-    image:
-      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRQBQQfBzEsqTN91MHwdukq0yaBxWIcn5RjUw&usqp=CAU",
-    address: "meetupstreet 5, 1234565 meetup city",
-    description:
-      "This is first, amazing meetup which you definitely should not miss ",
-  },
-  {
-    id: "2",
-    title: "This is first meetup",
-    image:
-      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRnZIKelxCg9Y2-fjyU42vBP_jBRLuDJukaaA&usqp=CAU  ",
-    address: "meetupstreet 2, 4565789 meetup city",
-    description:
-      "This is first, amazing meetup which you definitely should not miss ",
-  },
-];
-
 const AllMeetups = () => {
+  const [isLoading, setIsLoading] = useState(true);
+  const [loadedMeetups, setLoadedMeetups] = useState([]);
+
+  useEffect(() => {
+    setIsLoading(true);
+    fetch("https://react-meetup-5c2cf-default-rtdb.firebaseio.com/meetups.json")
+      .then((response) => {
+        return response.json();
+      })
+      .then((data) => {
+        setIsLoading(false);
+        const meetups = [];
+        for (const key in data) {
+          const meetup = {
+            id: key,
+            ...data[key],
+          };
+          meetups.push(meetup);
+        }
+        setLoadedMeetups(meetups);
+      });
+  }, []);
+
+  if (isLoading) {
+    return (
+      <section>
+        <p>Loading... </p>
+      </section>
+    );
+  }
+  console.log(loadedMeetups);
   return (
     <section className="md:container md:mx-auto flex justify-center item-center">
-      <MeetupsList meetup={MEETUP_DATA} />
+      <MeetupsList meetup={loadedMeetups} />
     </section>
   );
 };
