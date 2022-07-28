@@ -1,6 +1,8 @@
 import React, { useRef } from "react";
+import { useNavigate } from "react-router-dom";
 
 const NewMeetupForm = () => {
+  const navigate = useNavigate();
   const titleInputRef = useRef();
   const imageInputRef = useRef();
   const addressInputRef = useRef();
@@ -14,7 +16,9 @@ const NewMeetupForm = () => {
         body: JSON.stringify(meetupData),
         headers: { "Content-Type": "application/json" },
       }
-    );
+    ).then(() => {
+      navigate("/");
+    });
   };
 
   const AddMeetup = (e) => {
