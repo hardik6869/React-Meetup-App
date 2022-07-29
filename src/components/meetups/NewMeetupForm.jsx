@@ -40,9 +40,6 @@ const NewMeetupForm = () => {
   return (
     <div className="container flex justify-center mt-5">
       <div className="card col-md-5 item-center p-4 shadow-lg">
-        <h1 className="text-2xl font-weight-bold mb-3 text-center">
-          Add New Meetup
-        </h1>
         <form className="font-weight-bold" onSubmit={AddMeetup}>
           <div className="form-group">
             <label> Meetup Title</label>

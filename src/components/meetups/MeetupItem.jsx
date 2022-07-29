@@ -21,20 +21,23 @@ const MeetupItem = (props) => {
   };
 
   return (
-    <div className="border-1 shadow-lg m-3 card p-3 text-center">
-      <h3 className="mt-3"> {props.title} </h3>
-
-      <img src={props.image} alt={props.title} className="mt-3" />
-
-      <address className="mt-3"> {props.address} </address>
-      <p className="mt-3"> {props.description} </p>
-
-      <button
-        className="btn btn-outline-secondary mt-3 col-3 items-center"
-        onClick={toggleFavoriteStatushandler}
-      >
-        {itemIsFavorite ? "Remove from Favorites" : "To Favorites"}
-      </button>
+    <div className="border-1 shadow-lg m-3 card text-center">
+      <h3 className="mt-3 font-bold text-1xl "> {props.title} </h3>
+      <div className="h-80 w-80">
+        <img src={props.image} alt={props.title} className="mt-3" />
+      </div>
+      <div className="w-100">
+        <address className="mt-3"> {props.address} </address>
+        <p className="mt-3 items-center "> {props.description} </p>
+      </div>
+      <div className="m-3">
+        <button
+          className="btn btn-outline-secondary"
+          onClick={toggleFavoriteStatushandler}
+        >
+          {itemIsFavorite ? "Remove from Favorites" : "To Favorites"}
+        </button>
+      </div>
     </div>
   );
 };

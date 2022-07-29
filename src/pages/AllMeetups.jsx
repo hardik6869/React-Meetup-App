@@ -33,9 +33,15 @@ const AllMeetups = () => {
     );
   }
   return (
-    <section className="md:container md:mx-auto flex justify-center item-center">
-      <MeetupsList meetup={loadedMeetups} />
-    </section>
+    <>
+      <h1 className="text-center text-2xl text-gray-700 font-bold m-5">
+        My Favorites
+      </h1>
+
+      <section className="md:container md:mx-auto flex justify-center item-center">
+        <MeetupsList meetup={loadedMeetups} />
+      </section>
+    </>
   );
 };
 
